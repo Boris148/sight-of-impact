@@ -21,14 +21,23 @@
         .location-tag { font-size: 0.8rem; color: rgba(255,255,255,0.5); letter-spacing: 3px; text-transform: uppercase; }
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
         .shows-header { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: #b40000; margin-bottom: 30px; text-align: center; }
-        .show-card { background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.06); border-left: 3px solid #b40000; border-radius: 4px; padding: 24px 28px; margin-bottom: 16px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .show-card { background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.06); border-left: 3px solid #b40000; border-radius: 4px; padding: 24px 28px; margin-bottom: 16px; transition: all 0.3s ease; position: relative; overflow: hidden; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .show-card:hover { background: rgba(180, 0, 0, 0.06); border-left-color: #ff1a1a; transform: translateX(4px); }
         .show-card.headliner { border-left-color: #ff3333; background: linear-gradient(135deg, rgba(180, 0, 0, 0.08) 0%, rgba(255,255,255,0.02) 100%); }
-        .show-card.headliner::after { content: '\2605 HEADLINER'; position: absolute; top: 12px; right: 16px; font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 2px; color: #ff3333; font-weight: 600; }
+        .show-badge { font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 2px; color: #ff3333; font-weight: 600; margin-bottom: 6px; }
+        .show-info { flex: 1; }
         .show-date { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
         .show-venue .venue-name { color: #fff; font-weight: 500; font-size: 0.95rem; }
         .show-with { font-size: 0.85rem; color: #b40000; font-weight: 500; letter-spacing: 0.5px; margin-top: 4px; }
         .show-city { font-size: 0.8rem; color: #666; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+        .show-card.past { opacity: 0.35; border-left-color: #333; }
+        .show-card.past .show-date { color: #666; }
+        .show-card.past .show-badge { color: #555; }
+        .show-card.past:hover { transform: none; background: inherit; }
+        .past-label { font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 2px; color: #444; margin-top: 6px; }
+        .ticket-btn { display: inline-block; padding: 8px 20px; background: #b40000; color: #fff; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; border: none; white-space: nowrap; margin-left: 16px; flex-shrink: 0; }
+        .ticket-btn:hover { background: #ff1a1a; transform: scale(1.05); }
+        .ticket-btn.sold-out { background: transparent; border: 1px solid #444; color: #555; pointer-events: none; }
         .more-dates { text-align: center; padding: 50px 0 30px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; }
         .more-dates p { color: #666; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
         .cta-follow { display: inline-block; padding: 14px 40px; background: #b40000; color: #fff; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s ease; border: none; }
@@ -37,7 +46,7 @@
         .merch-link:hover { border-color: #b40000; color: #fff; }
         .footer { text-align: center; padding: 30px 0; }
         .footer p { color: #333; font-size: 0.7rem; letter-spacing: 1px; }
-        @media (max-width: 600px) { .hero { min-height: 320px; } .logo { width: 220px; } .container { padding: 30px 16px; } .show-card { padding: 20px; } .show-date { font-size: 1.3rem; } .show-card.headliner::after { position: relative; display: block; top: auto; right: auto; margin-bottom: 8px; } }
+        @media (max-width: 600px) { .hero { min-height: 320px; } .logo { width: 220px; } .container { padding: 30px 16px; } .show-card { padding: 20px; flex-direction: column; align-items: flex-start; } .show-date { font-size: 1.3rem; } .ticket-btn { margin-left: 0; margin-top: 12px; } }
         .show-card { opacity: 0; transform: translateY(20px); animation: fadeUp 0.5s ease forwards; }
         .show-card:nth-child(1) { animation-delay: 0.1s; } .show-card:nth-child(2) { animation-delay: 0.2s; } .show-card:nth-child(3) { animation-delay: 0.3s; } .show-card:nth-child(4) { animation-delay: 0.4s; } .show-card:nth-child(5) { animation-delay: 0.5s; }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
@@ -55,44 +64,90 @@
     <div class="container">
         <div class="shows">
             <h2 class="shows-header">2026 Tour Dates</h2>
-            <div class="show-card headliner">
-                <div class="show-date">March 27</div>
-                <div class="show-venue"><span class="venue-name">The Flying Walrus</span></div>
-                <div class="show-city">McAllen, TX</div>
+
+            <div class="show-card headliner" data-date="2026-03-27">
+                <div class="show-info">
+                    <div class="show-badge">&#9733; HEADLINER</div>
+                    <div class="show-date">March 27</div>
+                    <div class="show-venue"><span class="venue-name">The Flying Walrus</span></div>
+                    <div class="show-city">McAllen, TX</div>
+                </div>
+                <a href="#" class="ticket-btn">Get Tickets</a>
             </div>
-            <div class="show-card">
-                <div class="show-date">April 11</div>
-                <div class="show-venue"><span class="venue-name">House Of Rock</span></div>
-                <div class="show-with">w/ Tantric</div>
-                <div class="show-city">Corpus Christi, TX</div>
+
+            <div class="show-card" data-date="2026-04-11">
+                <div class="show-info">
+                    <div class="show-date">April 11</div>
+                    <div class="show-venue"><span class="venue-name">House Of Rock</span></div>
+                    <div class="show-with">w/ Tantric</div>
+                    <div class="show-city">Corpus Christi, TX</div>
+                </div>
+                <a href="#" class="ticket-btn">Get Tickets</a>
             </div>
-            <div class="show-card">
-                <div class="show-date">April 25</div>
-                <div class="show-venue"><span class="venue-name">The Flying Walrus</span></div>
-                <div class="show-city">McAllen, TX</div>
+
+            <div class="show-card" data-date="2026-04-25">
+                <div class="show-info">
+                    <div class="show-date">April 25</div>
+                    <div class="show-venue"><span class="venue-name">The Flying Walrus</span></div>
+                    <div class="show-city">McAllen, TX</div>
+                </div>
+                <a href="#" class="ticket-btn">Get Tickets</a>
             </div>
-            <div class="show-card">
-                <div class="show-date">April 26</div>
-                <div class="show-venue"><span class="venue-name">The Flying Walrus</span></div>
-                <div class="show-with">w/ Stories Through Storms</div>
-                <div class="show-city">McAllen, TX</div>
+
+            <div class="show-card" data-date="2026-04-26">
+                <div class="show-info">
+                    <div class="show-date">April 26</div>
+                    <div class="show-venue"><span class="venue-name">The Flying Walrus</span></div>
+                    <div class="show-with">w/ Stories Through Storms</div>
+                    <div class="show-city">McAllen, TX</div>
+                </div>
+                <a href="#" class="ticket-btn">Get Tickets</a>
             </div>
-            <div class="show-card">
-                <div class="show-date">May 21</div>
-                <div class="show-venue"><span class="venue-name">House Of Rock</span></div>
-                <div class="show-with">w/ DOK</div>
-                <div class="show-city">Corpus Christi, TX</div>
+
+            <div class="show-card" data-date="2026-05-21">
+                <div class="show-info">
+                    <div class="show-date">May 21</div>
+                    <div class="show-venue"><span class="venue-name">House Of Rock</span></div>
+                    <div class="show-with">w/ DOK</div>
+                    <div class="show-city">Corpus Christi, TX</div>
+                </div>
+                <a href="#" class="ticket-btn">Get Tickets</a>
             </div>
         </div>
+
         <div class="more-dates">
             <p>More dates coming soon</p>
             <a href="https://www.instagram.com/thesightofimpact?igsh=MmhkbWQxb3cxYWx3" class="cta-follow" target="_blank">Follow on Instagram</a>
             <br>
             <a href="https://thesightofimpact.bigcartel.com/" class="merch-link" target="_blank">Shop Merch</a>
         </div>
+
         <div class="footer">
             <p>&copy; 2026 The Sight Of Impact</p>
         </div>
     </div>
+
+    <script>
+        // Auto-hide past shows
+        (function() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const cards = document.querySelectorAll('.show-card[data-date]');
+            cards.forEach(function(card) {
+                const showDate = new Date(card.getAttribute('data-date') + 'T23:59:59');
+                if (showDate < today) {
+                    card.classList.add('past');
+                    var badge = card.querySelector('.show-badge');
+                    if (badge) badge.textContent = 'PAST';
+                    var btn = card.querySelector('.ticket-btn');
+                    if (btn) { btn.textContent = 'Past'; btn.classList.add('sold-out'); }
+                    var label = document.createElement('div');
+                    label.className = 'past-label';
+                    label.textContent = 'This show has passed';
+                    card.querySelector('.show-info').appendChild(label);
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
