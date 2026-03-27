@@ -3,291 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Sight Of Impact — Upcoming Shows</title>
-    <meta name="description" content="The Sight Of Impact — Live show dates and tickets. South Texas heavy music.">
+    <title>The Sight Of Impact — Upcoming Shows 2026</title>
+    <meta name="description" content="The Sight Of Impact — Live show dates in South Texas.">
     <meta property="og:title" content="The Sight Of Impact — Upcoming Shows">
-    <meta property="og:description" content="Catch The Sight Of Impact live in South Texas. Full tour dates and venue info.">
+    <meta property="og:description" content="South Texas heavy music. Full tour dates and venue info.">
+    <meta property="og:image" content="hero.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: #0a0a0a;
-            color: #f0f0f0;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Animated background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 50%, rgba(180, 0, 0, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 50%, rgba(180, 0, 0, 0.05) 0%, transparent 60%);
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 60px 0 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            margin-bottom: 50px;
-        }
-
-        .band-name {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            line-height: 1.1;
-            background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 16px;
-        }
-
-        .tagline {
-            font-size: 1rem;
-            font-weight: 300;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: #b40000;
-            margin-bottom: 8px;
-        }
-
-        .location-tag {
-            font-size: 0.85rem;
-            color: #666;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Shows */
-        .shows-header {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #b40000;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .show-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-left: 3px solid #b40000;
-            border-radius: 4px;
-            padding: 24px 28px;
-            margin-bottom: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .show-card:hover {
-            background: rgba(180, 0, 0, 0.06);
-            border-left-color: #ff1a1a;
-            transform: translateX(4px);
-        }
-
-        .show-card.headliner {
-            border-left-color: #ff3333;
-            background: linear-gradient(135deg, rgba(180, 0, 0, 0.08) 0%, rgba(255,255,255,0.02) 100%);
-        }
-
-        .show-card.headliner::after {
-            content: '★ HEADLINER';
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            color: #ff3333;
-            font-weight: 600;
-        }
-
-        .show-date {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 4px;
-        }
-
-        .show-venue {
-            font-size: 0.95rem;
-            color: #ccc;
-            margin-bottom: 6px;
-        }
-
-        .show-venue .venue-name {
-            color: #fff;
-            font-weight: 500;
-        }
-
-        .show-with {
-            font-size: 0.85rem;
-            color: #b40000;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .show-city {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 4px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* More dates coming */
-        .more-dates {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            margin-top: 40px;
-        }
-
-        .more-dates p {
-            color: #666;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .cta-follow {
-            display: inline-block;
-            padding: 14px 40px;
-            border: 1px solid #b40000;
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .cta-follow:hover {
-            background: #b40000;
-            color: #fff;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 20px;
-        }
-
-        .footer p {
-            color: #333;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .container { padding: 20px 16px; }
-            .hero { padding: 40px 0 30px; }
-            .show-card { padding: 20px; }
-            .show-date { font-size: 1.3rem; }
-            .show-card.headliner::after { 
-                position: relative;
-                display: block;
-                top: auto; right: auto;
-                margin-bottom: 8px;
-            }
-        }
-
-        /* Subtle animation */
-        .show-card {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.5s ease forwards;
-        }
-        .show-card:nth-child(1) { animation-delay: 0.1s; }
-        .show-card:nth-child(2) { animation-delay: 0.2s; }
-        .show-card:nth-child(3) { animation-delay: 0.3s; }
-        .show-card:nth-child(4) { animation-delay: 0.4s; }
-        .show-card:nth-child(5) { animation-delay: 0.5s; }
-
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        body { background: #0a0a0a; color: #f0f0f0; font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
+        .hero { position: relative; width: 100%; min-height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('hero.jpg') center center / cover no-repeat; filter: brightness(0.3) contrast(1.1); z-index: 0; }
+        .hero-content { position: relative; z-index: 1; padding: 60px 20px; }
+        .logo { width: 280px; max-width: 70vw; margin-bottom: 20px; filter: brightness(1.2) contrast(1.1); }
+        .tagline { font-size: 0.9rem; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: #b40000; margin-bottom: 8px; }
+        .location-tag { font-size: 0.8rem; color: rgba(255,255,255,0.5); letter-spacing: 3px; text-transform: uppercase; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .shows-header { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: #b40000; margin-bottom: 30px; text-align: center; }
+        .show-card { background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.06); border-left: 3px solid #b40000; border-radius: 4px; padding: 24px 28px; margin-bottom: 16px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .show-card:hover { background: rgba(180, 0, 0, 0.06); border-left-color: #ff1a1a; transform: translateX(4px); }
+        .show-card.headliner { border-left-color: #ff3333; background: linear-gradient(135deg, rgba(180, 0, 0, 0.08) 0%, rgba(255,255,255,0.02) 100%); }
+        .show-card.headliner::after { content: '\2605 HEADLINER'; position: absolute; top: 12px; right: 16px; font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 2px; color: #ff3333; font-weight: 600; }
+        .show-date { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .show-venue .venue-name { color: #fff; font-weight: 500; font-size: 0.95rem; }
+        .show-with { font-size: 0.85rem; color: #b40000; font-weight: 500; letter-spacing: 0.5px; margin-top: 4px; }
+        .show-city { font-size: 0.8rem; color: #666; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+        .more-dates { text-align: center; padding: 50px 0 30px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; }
+        .more-dates p { color: #666; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+        .cta-follow { display: inline-block; padding: 14px 40px; background: #b40000; color: #fff; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s ease; border: none; }
+        .cta-follow:hover { background: #ff1a1a; transform: scale(1.02); }
+        .merch-link { display: inline-block; margin-top: 16px; padding: 12px 32px; border: 1px solid rgba(255,255,255,0.15); color: #aaa; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s ease; }
+        .merch-link:hover { border-color: #b40000; color: #fff; }
+        .footer { text-align: center; padding: 30px 0; }
+        .footer p { color: #333; font-size: 0.7rem; letter-spacing: 1px; }
+        @media (max-width: 600px) { .hero { min-height: 320px; } .logo { width: 220px; } .container { padding: 30px 16px; } .show-card { padding: 20px; } .show-date { font-size: 1.3rem; } .show-card.headliner::after { position: relative; display: block; top: auto; right: auto; margin-bottom: 8px; } }
+        .show-card { opacity: 0; transform: translateY(20px); animation: fadeUp 0.5s ease forwards; }
+        .show-card:nth-child(1) { animation-delay: 0.1s; } .show-card:nth-child(2) { animation-delay: 0.2s; } .show-card:nth-child(3) { animation-delay: 0.3s; } .show-card:nth-child(4) { animation-delay: 0.4s; } .show-card:nth-child(5) { animation-delay: 0.5s; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <img src="logo.jpg" alt="The Sight Of Impact" class="logo">
             <div class="tagline">Upcoming Shows</div>
-            <h1 class="band-name">The Sight<br>Of Impact</h1>
             <p class="location-tag">South Texas</p>
         </div>
-
+    </div>
+    <div class="container">
         <div class="shows">
             <h2 class="shows-header">2026 Tour Dates</h2>
-
             <div class="show-card headliner">
                 <div class="show-date">March 27</div>
                 <div class="show-venue"><span class="venue-name">The Flying Walrus</span></div>
                 <div class="show-city">McAllen, TX</div>
             </div>
-
             <div class="show-card">
                 <div class="show-date">April 11</div>
                 <div class="show-venue"><span class="venue-name">House Of Rock</span></div>
                 <div class="show-with">w/ Tantric</div>
                 <div class="show-city">Corpus Christi, TX</div>
             </div>
-
             <div class="show-card">
                 <div class="show-date">April 25</div>
                 <div class="show-venue"><span class="venue-name">The Flying Walrus</span></div>
                 <div class="show-city">McAllen, TX</div>
             </div>
-
             <div class="show-card">
                 <div class="show-date">April 26</div>
                 <div class="show-venue"><span class="venue-name">The Flying Walrus</span></div>
                 <div class="show-with">w/ Stories Through Storms</div>
                 <div class="show-city">McAllen, TX</div>
             </div>
-
             <div class="show-card">
                 <div class="show-date">May 21</div>
                 <div class="show-venue"><span class="venue-name">House Of Rock</span></div>
                 <div class="show-with">w/ DOK</div>
                 <div class="show-city">Corpus Christi, TX</div>
             </div>
-
         </div>
-
         <div class="more-dates">
             <p>More dates coming soon</p>
-            <a href="https://www.instagram.com/" class="cta-follow">Follow For Updates</a>
+            <a href="https://www.instagram.com/thesightofimpact?igsh=MmhkbWQxb3cxYWx3" class="cta-follow" target="_blank">Follow on Instagram</a>
+            <br>
+            <a href="https://thesightofimpact.bigcartel.com/" class="merch-link" target="_blank">Shop Merch</a>
         </div>
-
         <div class="footer">
-            <p>© 2026 The Sight Of Impact. All rights reserved.</p>
+            <p>&copy; 2026 The Sight Of Impact</p>
         </div>
     </div>
 </body>
